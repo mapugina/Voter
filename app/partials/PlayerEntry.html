@@ -13,7 +13,7 @@
 			</select> 
 
 			<button type="button" class = "btn btn-primary" ng-disabled="players.length >= 4"id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
-			<button type="button" ng-disabled="players.length < 2" class = "btn btn-success" id="doneBtn" onclick="moveToGame();">All Done!</button> 
+			<a href = "#/gameboard" ng-disabled="players.length < 2" class = "btn btn-success" >All Done!</a> 
 
 			<button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
 			<br> 

@@ -72,13 +72,19 @@ angular.module('myApp.controllers', [])
 				}
 			}			
 			
+			$scope.go = function ( path ) 
+			{
+				console.log("attempting to route to " + path)
+			  $location.path( path );
+			};
+			
 			$scope.players.push(
-				{
-					name: playername, 
-					color: playercolor
-				});
-				isError(false);
-				$scope.playeralert = "Player " + $scope.playername + " added.";
-				$scope.playername = "";
-		}
+			{
+				name: playername, 
+				color: playercolor
+			});
+			isError(false);
+			$scope.playeralert = "Player " + $scope.playername + " added.";
+			$scope.playername = "";
+			}
   });
