@@ -39,6 +39,23 @@ angular.module('myApp.controllers', [])
 			}
 		}
 		
+		$scope.removePlayer = function(index)
+		{
+			console.log("in removeplayer");		
+			
+			var removed = $scope.players.splice(index, 1);
+			
+			isError(false);
+			$scope.playeralert = removed[0].name + " removed.";
+			
+			// for (var index = 0; index < $scope.players.length; ++index)
+// 			{
+// 				if ($scope.players[index] = player.playername)
+// 				{
+// 					$scope.players.splice(index, 1);
+// 				}
+// 			}	
+		}
 		
 		function addToPlayers(playername, playercolor)
 		{

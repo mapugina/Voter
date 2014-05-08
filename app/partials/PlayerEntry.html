@@ -31,7 +31,10 @@
 		
 		<div class="panel-body">
 			<ul class="list-group">
-			  <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" > {{player.name}} </li>
+			  <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" >
+					<button type="button" class ="btn-xs btn-danger" ng-click="removePlayer($index)">delete</button>
+					 {{player.name}} 
+				 </li>
 			</ul> 
 		</div>		
 	</div>
