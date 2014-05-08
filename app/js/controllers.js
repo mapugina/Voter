@@ -47,14 +47,6 @@ angular.module('myApp.controllers', [])
 			
 			isError(false);
 			$scope.playeralert = removed[0].name + " removed.";
-			
-			// for (var index = 0; index < $scope.players.length; ++index)
-// 			{
-// 				if ($scope.players[index] = player.playername)
-// 				{
-// 					$scope.players.splice(index, 1);
-// 				}
-// 			}	
 		}
 		
 		function addToPlayers(playername, playercolor)
@@ -71,7 +63,7 @@ angular.module('myApp.controllers', [])
 			//Check for player uniqueness
 			for (var index = 0; index < $scope.players.length; ++index)
 			{
-				if ($scope.players[index] = playername)
+				if ($scope.players[index] == playername)
 				{
 					isError(true);
 					$scope.playeralert = 
