@@ -7,6 +7,8 @@ angular.module('myApp.controllers', [])
 		$scope.players = [];
 		$scope.playeralert = "";
 		$scope.alertclass = "alert";
+		$scope.error = false;
+		$scope.success = false;
 		//add a player
 		$scope.addPlayer = function()
 		{	
@@ -19,16 +21,55 @@ angular.module('myApp.controllers', [])
 			{
 				$scope.players = array;	
 			});
+			isError(false);
+			$scope.playeralert = "Defaults added.";
 		}
+		
+		function isError(indicator)
+		{
+			if (indicator)
+			{
+				$scope.success = false;
+				$scope.error = true;
+			}
+			else
+			{
+				$scope.error = false;
+				$scope.success = true;
+			}
+		}
+		
 		
 		function addToPlayers(playername, playercolor)
 		{
+			//Check to make sure there is a player name to add
+			if (playername == null || playername == "")
+			{
+				isError(true);
+				$scope.playeralert = 
+				"Please enter a player name before attempting to add it.";
+				return;
+			}
+			
+			//Check for player uniqueness
+			for (var index = 0; index < $scope.players.length; ++index)
+			{
+				if ($scope.players[index] = playername)
+				{
+					isError(true);
+					$scope.playeralert = 
+					playername + " is already taken. Please choose a different name.";
+					return;
+				}
+			}			
+			
 			$scope.players.push(
 				{
 					name: playername, 
 					color: playercolor
 				});
-				$scope.alertstyle = "alert-success";
+				isError(false);
 				$scope.playeralert = "Player " + $scope.playername + " added.";
+				$scope.playername = "";
 		}
   });

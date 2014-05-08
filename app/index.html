@@ -22,12 +22,9 @@
 	
 </head>
 <body ng-controller = "PlayerAdditionCtrl">
-  
-	
-	
 	<div class="panel-body" id="playerEntry">
 		<h1>Player entry</h1>
-		<div ng-class="alertclass">{{playeralert}}</div>
+		
 		<label for="playername">Name: </label><input id="playername" class="form-control" type="text" name="playername" ng-model="playername"> 
 	            <select id="playerColor" ng-model="playercolor"> 
 	              <option value="red">Red</option> 
@@ -41,8 +38,9 @@
 
 	        <button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
 	        <br> 
-					<br> 
-						<div class= " panel panel-primary">
+					<br>
+					<div class = "alert" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div> 
+						<div class= "panel panel-primary">
 						<div class = "panel-heading">
 						  <h3 class = "panel-title">Players</h3>
 					  </div>
