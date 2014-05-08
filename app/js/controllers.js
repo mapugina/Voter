@@ -70,13 +70,7 @@ angular.module('myApp.controllers', [])
 					playername + " is already taken. Please choose a different name.";
 					return;
 				}
-			}			
-			
-			$scope.go = function ( path ) 
-			{
-				console.log("attempting to route to " + path)
-			  $location.path( path );
-			};
+			}
 			
 			$scope.players.push(
 			{
