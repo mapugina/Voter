@@ -6,28 +6,53 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Scratch Snake</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="css/app.css"/>
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+	
+	<!-- Bootstrap files -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<script src="bower_components/jquery/dist/jquery.js"> </script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+<body ng-controller = "PlayerAdditionCtrl">
+  
+	
+	
+	<div class="panel-body" id="playerEntry">
+		<h1>Player entry</h1> 
+	        <p> 
+		<label for="playername">Name: </label><input id="playername" class="form-control" type="text" name="playername" ng-model="playername"> 
+	            <select id="playerColor" ng-model="playercolor"> 
+	              <option value="red">Red</option> 
+	              <option value="blue">Blue</option> 
+	              <option value="limegreen">Green</option> 
+	              <option value="blueviolet">Violet</option> 
+	            </select> 
+	        </p> 
+	        <button type="button" class = "btn btn-primary" id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
+	        <button type="button" class = "btn btn-success" id="doneBtn" onclick="moveToGame();">All Done!</button> 
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
+	        <button type="button" class = "btn btn-info" id="defaultsBtn" onclick="loadDefaults();">Load Defaults</button> 
+	        <br> 
+					<br> 
+						<div class= " panel panel-primary">
+						<div class = "panel-heading">
+						  <h3 class = "panel-title">Players</h3>
+					  </div>
+					  <div class="panel-body">
+					    <ul class="list-group">
+						    <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" > {{player.name}} </li>
+						  </ul> 
+					  </div>
+				</div>
+	</div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
