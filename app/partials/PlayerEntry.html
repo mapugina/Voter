@@ -5,12 +5,8 @@
 		</div>
 		<div class="panel-body">
 			<label for="playername">Name: </label><input id="playername" class="form-control" type="text" name="playername" ng-model="playername"> 
-			<select id="playerColor" ng-model="playercolor"> 
-				<option value="red" style="color:red;">Red</option> 
-				<option value="blue" style="color:blue;">Blue</option> 
-				<option value="limegreen" style="color:limegreen;">Green</option> 
-				<option value="blueviolet" style="color:blueviolet;">Violet</option> 
-			</select> 
+			<br> 
+			<select ng-model="playercolor" ng-init="playercolor = colors[0]" ng-options="color.colorName for color in colors"></select>			
 
 			<button type="button" class = "btn btn-primary" ng-disabled="players.length >= 4"id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
 			<a href = "#/gameboard" ng-disabled="players.length < 2" class = "btn btn-success" >All Done!</a> 

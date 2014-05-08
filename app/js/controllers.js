@@ -3,12 +3,17 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('PlayerAdditionCtrl', function($scope, $http) {
-		$scope.players = [];
+  .controller('PlayerAdditionCtrl', function($scope, $http, PlayerlistService) {
+		$scope.players = PlayerlistService.players;
 		$scope.playeralert = "";
 		$scope.alertclass = "alert";
 		$scope.error = false;
 		$scope.success = false;
+		$scope.colors = []
+		$http.get('webcolors.json').success(function(array)
+			{
+				$scope.colors = array;				
+			});
 		//add a player
 		$scope.addPlayer = function()
 		{	
@@ -19,7 +24,8 @@ angular.module('myApp.controllers', [])
 		{
 			$http.get('defaults.json').success(function(array)
 			{
-				$scope.players = array;	
+				PlayerlistService.players = array;
+				$scope.players = PlayerlistService.players;	
 			});
 			isError(false);
 			$scope.playeralert = "Defaults added.";
