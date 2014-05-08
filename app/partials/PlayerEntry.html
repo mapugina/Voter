@@ -1,0 +1,38 @@
+<div>	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h1 class="panel-title">Player entry</h1>
+		</div>
+		<div class="panel-body">
+			<label for="playername">Name: </label><input id="playername" class="form-control" type="text" name="playername" ng-model="playername"> 
+			<select id="playerColor" ng-model="playercolor"> 
+				<option value="red">Red</option> 
+				<option value="blue">Blue</option> 
+				<option value="limegreen">Green</option> 
+				<option value="blueviolet">Violet</option> 
+			</select> 
+
+			<button type="button" class = "btn btn-primary" id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
+			<button type="button" class = "btn btn-success" id="doneBtn" onclick="moveToGame();">All Done!</button> 
+
+			<button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
+			<br> 
+			<br>
+		</div>
+  </div>
+	
+	<div class = "alert" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div>
+	 
+	<div class= "panel panel-primary" ng-show = "players.length != 0" >
+		
+		<div class = "panel-heading">
+			<h3 class = "panel-title">Players</h3>
+		</div>
+		
+		<div class="panel-body">
+			<ul class="list-group">
+			  <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" > {{player.name}} </li>
+			</ul> 
+		</div>		
+	</div>
+</div>
