@@ -40,17 +40,17 @@
 	        <br> 
 					<br>
 					<div class = "alert" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div> 
-						<div class= "panel panel-primary">
-						<div class = "panel-heading">
-						  <h3 class = "panel-title">Players</h3>
-					  </div>
-					  <div class="panel-body">
-					    <ul class="list-group">
-						    <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" > {{player.name}} </li>
-						  </ul> 
-					  </div>
-				</div>
-	</div>
+						<div class= "panel panel-primary" ng-show = "players.length != 0" >
+							<div class = "panel-heading">
+							  <h3 class = "panel-title">Players</h3>
+						  </div>
+						  <div class="panel-body">
+						    <ul class="list-group">
+							    <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" > {{player.name}} </li>
+							  </ul> 
+						  </div>
+						</div>
+					</div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
