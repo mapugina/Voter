@@ -1,5 +1,5 @@
 <div ng-controller = "PlayerAdditionCtrl">	
-	<div class="panel panel-default">
+	<div class="playerbox panel panel-default">
 		<div class="panel-heading">
 			<h1 class="panel-title">Player entry</h1>
 		</div>
@@ -8,7 +8,7 @@
 			<br> 
 			<select ng-init="playercolor = colors[0]" ng-model="playercolor"  ng-options="color.colorName for color in colors"></select>			
 
-			<button type="button" class = "btn btn-primary" ng-disabled="players.length >= 10"id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
+			<button type="button" class = "streched btn btn-primary" ng-disabled="players.length >= 10"id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
 			<a href = "#/startvote" ng-disabled="players.length < 5" class = "btn btn-success" >All Done!</a> 
 
 			<button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
@@ -18,10 +18,9 @@
   </div>
 	
 	
-	
-	<div class = "alert" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div>
+	<div class = "playerbox alert" ng-hide = "playeralert == ''" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div>
 	 
-	<div class= "panel panel-primary" ng-show = "players.length != 0" >
+	<div class= "playerbox panel panel-primary" ng-show = "players.length != 0" >
 		
 		<div class = "panel-heading">
 			<h3 class = "panel-title">Players</h3>

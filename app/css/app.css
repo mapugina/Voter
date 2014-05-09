@@ -1,5 +1,10 @@
 /* app css stylesheet */
 
+body
+{
+	background-image:url("bg.gif");
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -48,4 +53,24 @@
 .button {
     position: absolute:
     top: 50%;
+}
+
+.streched
+{
+	display: table-cell;
+}
+
+.playerbox
+{
+	margin: 2.5% 5%;
+}
+
+.transparentbox
+{
+	opacity: 0.4;
+}
+
+.nonopaque
+{
+	opacity: 1;
 }

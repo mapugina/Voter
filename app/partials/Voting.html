@@ -1,15 +1,15 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
 
-<div class="jumbotron">
+<div class="jumbotron transparentbox">
   <div class="container">
-    <h1 class="wrapper" ng-model="playername">{{players[index].name}}</h1>        
+    <h1 class="wrapper nonopaque" ng-model="playername">{{players[index].name}}</h1>        
   </div>
 </div>
 	
 <div class="wrapper">
-	<a class="button btn btn-success" ng-click="addVote(true)" role="button">Yea</a>	
+	<a class="button btn btn-lg btn-success" ng-click="addVote(true)" role="button">Yea</a>	
 </div>	
-
+<br>
 <div class="wrapper">	
-	<a class="button btn btn-danger" ng-click="addVote(false)" role="button">Nay</a>
+	<a class="button btn btn-lg btn-danger" ng-click="addVote(false)" role="button">Nay</a>
 </div>

@@ -1,1 +1,26 @@
-<p>You made it</p>
+<div class="jumbotron transparentbox">
+  <div class="container">
+    <h1 class="wrapper nonopaque">{{message}}</h1>
+		<p class="wrapper nonopaque">{{score}}</p>        
+  </div>
+</div>
+
+<div class="wrapper">
+	<a class="button btn btn-large btn-primary" role="button" href="#/startvote">New Vote</a><br><br>
+</div>
+
+<div class= "playerbox panel panel-primary" ng-show = "players.length != 0" >
+
+	<div class = "panel-heading">
+		<h3 class = "panel-title">Players</h3>
+	</div>
+
+	<div class="panel-body">
+		<ul class="list-group wrapper">
+		  <li class = "list-group-item" ng-click="toggleVote($index)" ng-repeat="player in players" ng-style =  "{color: player.color}" >				
+				 <span>{{player.name}}</span>
+				 <span ng-show="showMap[$index]">{{votes[player.name]}}</span>
+			 </li>
+		</ul> 
+	</div>
+</div>

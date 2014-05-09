@@ -98,14 +98,19 @@ module.controller('PlayerAdditionCtrl', function($scope, $http, PlayerlistServic
 			$scope.index = 0;
 			$scope.players = PlayerlistService.players;
 			
+			$scope.clearVotes = function()
+			{
+				VoteService.clear();
+			}
+			
 			$scope.addVote = function(vote)
 			{					
 				if (vote)
 				{
 					VoteService.yeas++;
 				}
-							
-				VoteService.playervotes[$scope.players[$scope.index].name] = vote;
+				
+				VoteService.playervotes[$scope.players[$scope.index].name] = vote  ? '\u2713' : '\u2718';
 				
 				$scope.index++;				
 				
@@ -114,4 +119,36 @@ module.controller('PlayerAdditionCtrl', function($scope, $http, PlayerlistServic
 					$location.path("/results")
 				}
 			}
+	});
+	
+	module.controller('ResultsCtrl', function($scope, PlayerlistService, VoteService)
+	{
+		$scope.players = PlayerlistService.players;
+		$scope.votes = VoteService.playervotes;
+		$scope.yeas = VoteService.yeas;
+		$scope.showMap = [];
+		
+		for (var i = 0; i < $scope.players.length; ++i)
+		{
+			$scope.showMap[i] = false;
+		}		
+				
+		var nays = (PlayerlistService.players.length - $scope.yeas);
+		
+		if ($scope.yeas > nays)
+		{
+			$scope.message = "Vote passes!";
+		}
+		else
+		{
+			$scope.message = "Vote fails!";
+		}
+		
+		$scope.score = $scope.yeas + " to " + nays;
+		
+		$scope.toggleVote = function(index)
+		{
+			$scope.showMap[index] = !$scope.showMap[index];
+		}
+				
 	});
