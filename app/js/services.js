@@ -16,3 +16,19 @@ module.factory('PlayerlistService', function()
 	return instance;
 });
 
+module.factory('VoteService', function()
+{
+	var instance = {};
+	
+	instance.playervotes=[];
+	instance.yeas = 0;
+	
+	instance.clear = function()
+	{
+		instance.playervotes = [];
+		instance.yeas = 0;
+	}
+	
+	return instance;
+});
+

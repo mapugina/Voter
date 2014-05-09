@@ -22,42 +22,9 @@
 	
 	
 </head>
-<body ng-controller = "PlayerAdditionCtrl">
+<body>
 	<div ng-view></div>
-	<!-- Commented out as this should all be in partials/PlayerEntry.html
-	<div class="panel-body" id="playerEntry">
-		<h1>Player entry</h1>
-		
-		<label for="playername">Name: </label><input id="playername" class="form-control" type="text" name="playername" ng-model="playername"> 
-	            <select id="playerColor" ng-model="playercolor"> 
-	              <option value="red">Red</option> 
-	              <option value="blue">Blue</option> 
-	              <option value="limegreen">Green</option> 
-	              <option value="blueviolet">Violet</option> 
-	            </select> 
-	        </p> 
-	        <button type="button" class = "btn btn-primary" id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
-	        <button type="button" class = "btn btn-success" id="doneBtn" onclick="moveToGame();">All Done!</button> 
 
-	        <button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
-	        <br> 
-					<br>
-					<div class = "alert" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div> 
-						<div class= "panel panel-primary" ng-show = "players.length != 0" >
-							<div class = "panel-heading">
-							  <h3 class = "panel-title">Players</h3>
-						  </div>
-						  <div class="panel-body">
-						    <ul class="list-group">
-							    <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" > {{player.name}} </li>
-							  </ul> 
-						  </div>
-						</div>
-					</div>
-		-->
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="js/app.js"></script>

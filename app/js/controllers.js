@@ -2,8 +2,10 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('PlayerAdditionCtrl', function($scope, $http, PlayerlistService) {
+var module = angular.module('myApp.controllers', []);
+
+
+module.controller('PlayerAdditionCtrl', function($scope, $http, PlayerlistService) {
 		$scope.players = PlayerlistService.players;
 		$scope.playeralert = "";
 		$scope.alertclass = "alert";
@@ -69,7 +71,9 @@ angular.module('myApp.controllers', [])
 			//Check for player uniqueness
 			for (var index = 0; index < $scope.players.length; ++index)
 			{
-				if ($scope.players[index] == playername)
+				console.log($scope.players[index].name + " ==  " + playername)
+				
+				if ($scope.players[index].name == playername)
 				{
 					isError(true);
 					$scope.playeralert = 
@@ -88,3 +92,26 @@ angular.module('myApp.controllers', [])
 			$scope.playername = "";
 			}
   });
+	
+	module.controller('VoteCtrl', function($scope, $location, PlayerlistService, VoteService) 
+	{
+			$scope.index = 0;
+			$scope.players = PlayerlistService.players;
+			
+			$scope.addVote = function(vote)
+			{					
+				if (vote)
+				{
+					VoteService.yeas++;
+				}
+							
+				VoteService.playervotes[$scope.players[$scope.index].name] = vote;
+				
+				$scope.index++;				
+				
+				if ($scope.index >= $scope.players.length)
+				{
+					$location.path("/results")
+				}
+			}
+	});

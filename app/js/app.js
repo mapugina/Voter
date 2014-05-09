@@ -11,6 +11,8 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/playerentry', {templateUrl: 'partials/PlayerEntry.html', controller: 'PlayerAdditionCtrl'});
-  $routeProvider.when('/gameboard', {templateUrl: 'partials/Gameboard.html', controller: 'PlayerAdditionCtrl'});
+  $routeProvider.when('/startvote', {templateUrl: 'partials/StartVote.html', controller: 'PlayerAdditionCtrl'});
+	$routeProvider.when('/vote', {templateUrl: 'partials/Voting.html', controller: 'VoteCtrl'});
+	$routeProvider.when('/results', {templateUrl: 'partials/Results.html', controller: 'VoteCtrl'});
   $routeProvider.otherwise({redirectTo: '/playerentry'});
 }]);

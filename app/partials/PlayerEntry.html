@@ -1,4 +1,4 @@
-<div>	
+<div ng-controller = "PlayerAdditionCtrl">	
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h1 class="panel-title">Player entry</h1>
@@ -6,16 +6,18 @@
 		<div class="panel-body">
 			<label for="playername">Name: </label><input id="playername" class="form-control" type="text" name="playername" ng-model="playername"> 
 			<br> 
-			<select ng-model="playercolor" ng-init="playercolor = colors[0]" ng-options="color.colorName for color in colors"></select>			
+			<select ng-init="playercolor = colors[0]" ng-model="playercolor"  ng-options="color.colorName for color in colors"></select>			
 
-			<button type="button" class = "btn btn-primary" ng-disabled="players.length >= 4"id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
-			<a href = "#/gameboard" ng-disabled="players.length < 2" class = "btn btn-success" >All Done!</a> 
+			<button type="button" class = "btn btn-primary" ng-disabled="players.length >= 10"id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
+			<a href = "#/startvote" ng-disabled="players.length < 5" class = "btn btn-success" >All Done!</a> 
 
 			<button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
 			<br> 
 			<br>
 		</div>
   </div>
+	
+	
 	
 	<div class = "alert" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div>
 	 
