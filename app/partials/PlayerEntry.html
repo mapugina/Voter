@@ -1,5 +1,5 @@
-<div ng-controller = "PlayerAdditionCtrl">	
-	<div class="playerbox panel panel-default">
+<div ng-controller = "AddPlayerCtrl">	
+	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h1 class="panel-title">Player entry</h1>
 		</div>
@@ -18,9 +18,9 @@
   </div>
 	
 	
-	<div class = "playerbox alert" ng-hide = "playeralert == ''" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div>
+	<div class = "alert" ng-hide = "playeralert == ''" ng-class="{'alert-danger' : error, 'alert-success' : success}">{{playeralert}}</div>
 	 
-	<div class= "playerbox panel panel-primary" ng-show = "players.length != 0" >
+	<div class= "panel panel-primary" ng-show = "players.length != 0" >
 		
 		<div class = "panel-heading">
 			<h3 class = "panel-title">Players</h3>

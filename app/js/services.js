@@ -5,9 +5,9 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
-var module = angular.module('myApp.services', []);
+var voteS = angular.module('voter.services', []);
 	
-module.factory('PlayerlistService', function()
+voteS.factory('PlayerlistService', function()
 {
 	var instance = {};
 	
@@ -16,7 +16,7 @@ module.factory('PlayerlistService', function()
 	return instance;
 });
 
-module.factory('VoteService', function()
+voteS.factory('VoteService', function()
 {
 	var instance = {};
 	
@@ -27,8 +27,7 @@ module.factory('VoteService', function()
 	{
 		instance.playervotes = [];
 		instance.yeas = 0;
-	}
+	};
 	
 	return instance;
 });
-
