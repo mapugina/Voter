@@ -55,7 +55,7 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
 		function addToPlayers(playername, playercolor)
 		{
 			//Check to make sure there is a player name to add
-			if (playername === null || playername === '')
+			if (playername == null || playername == '')
 			{
 				isError(true);
 				$scope.playeralert =
