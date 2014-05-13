@@ -91,7 +91,9 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
 voteC.controller('VoteCtrl', function($scope, $location, PlayerlistService, VoteService)
  {
 			$scope.index = 0;
-			$scope.players = PlayerlistService.players;
+			$scope.allplayers = PlayerlistService.players;
+			$scope.players = VoteService.participating.length === 0 ?
+			 PlayerlistService.players : VoteService.participating;
 			
 			$scope.clearVotes = function()
 			{
@@ -99,7 +101,7 @@ voteC.controller('VoteCtrl', function($scope, $location, PlayerlistService, Vote
 			};
 			
 			$scope.addVote = function(vote)
-			{
+			{								
 				if (vote)
 				{
 					VoteService.yeas++;
@@ -114,11 +116,72 @@ voteC.controller('VoteCtrl', function($scope, $location, PlayerlistService, Vote
 					$location.path('/results');
 				}
 			};
+			
+			function AddParticipant(index)
+			{
+				var player = PlayerlistService.players[index];
+				console.log("pushing " + player.name);
+				VoteService.participating.push(player);
+				
+				var x = VoteService.participating.pop();
+				console.log("x " + x.name);
+				
+				VoteService.participating.push(x);
+			}
+			
+			function RemoveParticipant(index)
+			{
+				var player = PlayerlistService.players[index];
+				
+				for (var i = 0; i < VoteService.participating.length; ++i)
+				{
+					if (VoteService.participating[i].name === player.name)
+					{
+						VoteService.participating.splice(i, 1);
+					}
+				}
+			}
+			
+			$scope.ToggleParticipation = function(index)
+			{
+				if($scope.playerIsParticipating(index))
+				{
+					RemoveParticipant(index);
+				}
+				else
+				{
+					AddParticipant(index);
+				}
+			}
+			
+			$scope.playerIsParticipating = function(index)
+			{
+				if (VoteService.participating.length === 0)
+				{
+					$scope.players = PlayerlistService.players;
+					return false;
+				}
+				$scope.players = VoteService.participating;
+				
+				var player = PlayerlistService.players[index];
+				
+				for (var i = 0; i < VoteService.participating.length; ++i)
+				{
+					if (VoteService.participating[i].name === 
+						player.name)
+					{
+						return true;
+					}
+				}
+				
+				return false;				
+			};
 		});
 	
 voteC.controller('ResultsCtrl', function($scope, PlayerlistService, VoteService)
 	{
-		$scope.players = PlayerlistService.players;
+		$scope.players = VoteService.participating.length === 0 ?
+			 PlayerlistService.players : VoteService.participating;
 		$scope.votes = VoteService.playervotes;
 		$scope.yeas = VoteService.yeas;
 		$scope.showMap = [];
@@ -128,7 +191,7 @@ voteC.controller('ResultsCtrl', function($scope, PlayerlistService, VoteService)
 			$scope.showMap[i] = false;
 		}
 				
-		var nays = (PlayerlistService.players.length - $scope.yeas);
+		var nays = ($scope.players.length - $scope.yeas);
 		
 		if ($scope.yeas > nays)
 		{
@@ -144,6 +207,11 @@ voteC.controller('ResultsCtrl', function($scope, PlayerlistService, VoteService)
 		$scope.toggleVote = function(index)
 		{
 			$scope.showMap[index] = !$scope.showMap[index];
+		};
+		
+		$scope.clearVotes = function()
+		{
+			VoteService.clear();
 		};
 				
 	});

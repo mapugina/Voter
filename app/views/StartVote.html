@@ -6,14 +6,13 @@
 
 	<div class="panel-body">
 		<ul class="list-group wrapper">
-		  <li class = "list-group-item" ng-repeat="player in players" ng-style =  "{color: player.color}" >
+		  <li class = "list-group-item" ng-repeat="player in allplayers" ng-class= "{active: playerIsParticipating($index)}" ng-style=  "{color: player.color}" ng-click="ToggleParticipation($index)">
 				 {{player.name}} 
 			 </li>
 		</ul> 
 	</div>
-	
 </div>
 
 <div class="wrapper">
-	<a class="btn btn-lg btn-primary button" ng-click = "clearVotes()" role="button" href="#/vote">Start Vote</a>
+	<a class="btn btn-lg btn-primary button" role="button" href="#/vote">Start Vote</a>
 </div>

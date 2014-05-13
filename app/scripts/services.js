@@ -21,10 +21,12 @@ voteS.factory('VoteService', function()
 	var instance = {};
 	
 	instance.playervotes=[];
+	instance.participating=[];
 	instance.yeas = 0;
 	
 	instance.clear = function()
 	{
+		instance.participating=[];
 		instance.playervotes = [];
 		instance.yeas = 0;
 	};
