@@ -120,13 +120,7 @@ voteC.controller('VoteCtrl', function($scope, $location, PlayerlistService, Vote
 			function AddParticipant(index)
 			{
 				var player = PlayerlistService.players[index];
-				console.log("pushing " + player.name);
 				VoteService.participating.push(player);
-				
-				var x = VoteService.participating.pop();
-				console.log("x " + x.name);
-				
-				VoteService.participating.push(x);
 			}
 			
 			function RemoveParticipant(index)
