@@ -15,7 +15,7 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
 			});
 		//add a player
 		$scope.addPlayer = function()
-		{
+		{				
 			addToPlayers($scope.playername, $scope.playercolor.hexValue);
 		};
 		

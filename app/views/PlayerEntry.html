@@ -6,14 +6,14 @@
 		<div class="panel-body">
 			<label for="playername">Name: </label><input id="playername" class="form-control" type="text" name="playername" ng-model="playername"> 
 			<br> 
-			<select ng-init="playercolor = colors[0]" ng-model="playercolor"  ng-options="color.colorName for color in colors"></select>			
+			<select class="form-control" ng-model="playercolor"  ng-options="color.colorName for color in colors" ng-init="playercolor = 'black'"></select>	
+			<br>		
 
-			<button type="button" class = "streched btn btn-primary" id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
-			<a href = "#/startvote" ng-disabled="players.length < 2" class = "btn btn-success" >All Done!</a> 
+			<button type="button" class = "streched btn btn-primary btn-block" id="addPlayerBtn" ng-click="addPlayer()">Add Player</button>
+			 
+			<a href = "#/startvote" ng-disabled="players.length < 2" class = "btn btn-success btn-block" >All Done!</a> 
 
-			<button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
-			<br> 
-			<br>
+			<button type="button" class = "btn btn-info btn-block" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
 		</div>
   </div>
 	
