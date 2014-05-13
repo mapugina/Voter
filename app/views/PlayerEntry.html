@@ -8,8 +8,8 @@
 			<br> 
 			<select ng-init="playercolor = colors[0]" ng-model="playercolor"  ng-options="color.colorName for color in colors"></select>			
 
-			<button type="button" class = "streched btn btn-primary" ng-disabled="players.length >= 10"id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
-			<a href = "#/startvote" ng-disabled="players.length < 5" class = "btn btn-success" >All Done!</a> 
+			<button type="button" class = "streched btn btn-primary" id="addPlayerBtn" ng-click="addPlayer()">Add Player</button> 
+			<a href = "#/startvote" ng-disabled="players.length < 2" class = "btn btn-success" >All Done!</a> 
 
 			<button type="button" class = "btn btn-info" id="defaultsBtn" ng-click="loadDefaults()">Load Defaults</button> 
 			<br> 
