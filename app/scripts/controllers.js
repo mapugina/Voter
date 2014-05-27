@@ -15,8 +15,12 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
 			});
 		//add a player
 		$scope.addPlayer = function()
-		{				
-			addToPlayers($scope.playername, $scope.playercolor.hexValue);
+		{	
+			var errorMsg = PlayerlistService.addToPlayers($scope.playername, $scope.playercolor.hexValue);			
+			$scope.playername = '';
+			isError(errorMsg.isError);
+			$scope.playeralert = errorMsg.message;
+			
 		};
 		
 		$scope.loadDefaults = function()
@@ -46,46 +50,17 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
 		
 		$scope.removePlayer = function(index)
 		{
+			var errorMsg = PlayerlistService.removePlayer(index);
+			isError(errorMsg.isError);
+			$scope.playeralert = errorMsg.message;
+			
+			/*
 			var removed = $scope.players.splice(index, 1);
 			
 			isError(false);
 			$scope.playeralert = removed[0].name + ' removed.';
+			*/
 		};
-		
-		function addToPlayers(playername, playercolor)
-		{			
-			//Check to make sure there is a player name to add
-			if (playername == null || playername == '')
-			{
-				isError(true);
-				$scope.playeralert =
-				'Please enter a player name before attempting to add it.';
-				return;
-			}
-			
-			//Check for player uniqueness
-			for (var index = 0; index < $scope.players.length; ++index)
-			{
-				
-				if ($scope.players[index].name === playername)
-				{
-					isError(true);
-					$scope.playeralert =
-					playername + ' is already taken. Please choose a different name.';
-					return;
-				}
-			}
-			
-			$scope.players.push(
-			{
-				name: playername,
-				color: playercolor
-			});
-			
-			isError(false);
-			$scope.playeralert = 'Player ' + $scope.playername + ' added.';
-			$scope.playername = '';
-		}
 	});
 	
 voteC.controller('VoteCtrl', function($scope, $location, PlayerlistService, VoteService)
