@@ -1,9 +1,21 @@
 var voteC = angular.module('voter.controllers', []);
 
 
-voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
+voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService, $q)
 	{
+		//Setup players array
+		
 		$scope.players = PlayerlistService.players;
+		var reloadArray = function () {
+			$scope.players = PlayerlistService.players;
+		}
+		$scope.$watchCollection('PlayerlistService.players',
+		function(){
+				$scope.players = PlayerlistService.players;
+		})
+		
+		
+		
 		$scope.playeralert = '';
 		$scope.alertclass = 'alert';
 		$scope.error = false;
@@ -12,7 +24,8 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
 		$http.get('webcolors.json').success(function(array)
 			{
 				$scope.colors = array;
-			});
+			});		
+			
 		//add a player
 		$scope.addPlayer = function()
 		{	
@@ -25,11 +38,13 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService)
 		
 		$scope.loadDefaults = function()
 		{
-			$http.get('defaults.json').success(function(array)
-			{
-				PlayerlistService.players = array;
-				$scope.players = PlayerlistService.players;
-			});
+			var deferred = $q.defer();
+			deferred.promise.then(reloadArray);
+			
+			PlayerlistService.loadDefaults(deferred);
+			
+			$scope.players = PlayerlistService.players;
+			
 			isError(false);
 			$scope.playeralert = 'Defaults added.';
 		};
