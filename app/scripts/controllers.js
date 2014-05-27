@@ -80,6 +80,8 @@ voteC.controller('AddPlayerCtrl', function($scope, $http, PlayerlistService, $q)
 	
 voteC.controller('VoteCtrl', function($scope, $location, PlayerlistService, VoteService)
  {
+	 VoteService.playervotes = [];
+	 VoteService.yeas = 0;
 			$scope.index = 0;
 			$scope.allplayers = PlayerlistService.players;
 			$scope.players = VoteService.participating.length === 0 ?
